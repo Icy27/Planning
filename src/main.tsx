@@ -9,19 +9,19 @@ import { Products } from "./pages/Products.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/planning/",
+    path: "/Planning/",
     element: <App />,
     children: [
       {
-        path: "/planning/",
+        path: "/Planning/",
         element: <Home />,
       },
       {
-        path: "/planning/products",
+        path: "/Planning/products",
         element: <Products />,
       },
       {
-        path: "/planning/contact",
+        path: "/Planning/contact",
         element: <Contact />,
       },
     ],

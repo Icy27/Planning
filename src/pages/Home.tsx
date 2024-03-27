@@ -16,11 +16,11 @@ export function Home() {
       <h1>Planning</h1>
 
       <nav>
-        <Link to="/planning/">Home</Link>
+        <Link to="/Planning/">Home</Link>
         {" | "}
-        <Link to="/planning/products">Products</Link>
+        <Link to="/Planning/products">Products</Link>
         {" | "}
-        <Link to="/planning/contact">Contact</Link>
+        <Link to="/Planning/contact">Contact</Link>
       </nav>
 
       <p className="read-the-docs">
