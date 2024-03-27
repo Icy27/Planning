@@ -16,7 +16,7 @@ export function Home() {
       <h1>Planning</h1>
 
       <nav>
-        <Link to="/Planning/">Home</Link>
+        <Link to="/Planning/home">Home</Link>
         {" | "}
         <Link to="/Planning/products">Products</Link>
         {" | "}
