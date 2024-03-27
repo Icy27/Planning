@@ -2,7 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
 import { Home } from "./pages/Home.tsx";
 import { Contact } from "./pages/Contact.tsx";
 import { Products } from "./pages/Products.tsx";
@@ -13,7 +17,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/Planning/",
+        path: "/Planning/", // Default route for /Planning
+        element: <Navigate to="/Planning/home" replace />,
+      },
+      {
+        path: "/Planning/home",
         element: <Home />,
       },
       {
