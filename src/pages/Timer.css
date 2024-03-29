@@ -28,7 +28,7 @@
 .progressBar,
 .timerInput {
   position: absolute;
-  transition: all 0.3s ease 0.3s;
+  transition: all 0.3s ease;
 }
 
 .timeField {
@@ -74,5 +74,5 @@
 
 .timerInput.moveUp .timeField {
   opacity: 1;
-  transition: opacity 1s ease 0.3s; /* Slow transition for opacity from 0 to 100 */
+  transition: opacity 0.8s ease 0.3s; /* Slow transition for opacity from 0 to 100 */
 }
