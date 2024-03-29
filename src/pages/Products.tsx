@@ -1,8 +1,9 @@
 import "./Products.css";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 
-export function Products() {
+export default function Products() {
   return (
     <>
       <div className="container">
@@ -14,7 +15,9 @@ export function Products() {
           >
             {Array.from(Array(1)).map((_, index) => (
               <Grid item xs={24} key={index}>
-                <button>Coming Soon</button>
+                <Link to="/Planning/timer">
+                  <button>Timer</button>
+                </Link>
               </Grid>
             ))}
           </Grid>

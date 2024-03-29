@@ -7,9 +7,7 @@ import {
   createBrowserRouter,
   Navigate,
 } from "react-router-dom";
-import { Home } from "./pages/Home.tsx";
-import { Contact } from "./pages/Contact.tsx";
-import { Products } from "./pages/Products.tsx";
+import { Home, Contact, Products, Timer } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/Planning/contact",
         element: <Contact />,
+      },
+      {
+        path: "/Planning/timer",
+        element: <Timer />,
       },
     ],
   },
