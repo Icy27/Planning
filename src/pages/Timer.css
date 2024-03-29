@@ -1,0 +1,78 @@
+.timeField input {
+  color: white;
+  text-align: center;
+}
+
+.snackbar .MuiSnackbarContent-root {
+  background-color: transparent;
+  box-shadow: none;
+  min-width: fit-content;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-class {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.timerDisplay,
+.progressBar,
+.timerInput {
+  position: absolute;
+  transition: all 0.3s ease 0.3s;
+}
+
+.timeField {
+  opacity: 1; /* Initial position */
+  transition: opacity 0.1s ease;
+}
+
+.timerDisplay,
+.progressBar {
+  padding: 20px;
+}
+
+.progressBar {
+  opacity: 0;
+}
+
+.progressBar span circle {
+  stroke-width: 1px;
+  color: #9fd6d3;
+}
+
+.timerInput {
+  padding: 20px;
+  top: 15px; /* Initial position */
+}
+
+.timerDisplay.h1-to-h2 {
+  font-size: 0.7rem;
+}
+
+.progressBar.active {
+  opacity: 1;
+}
+
+.timerInput.moveDown .timeField {
+  opacity: 0;
+  transition: opacity 0.1s ease; /* Fast transition for opacity from 100 to 0 */
+}
+
+.timerInput.moveDown {
+  top: 100px;
+}
+
+.timerInput.moveUp .timeField {
+  opacity: 1;
+  transition: opacity 1s ease 0.3s; /* Slow transition for opacity from 0 to 100 */
+}
