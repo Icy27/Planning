@@ -20,59 +20,62 @@ export default function Timer() {
   const [duration, setDuration] = useState(0);
   const [progress, setProgress] = useState(100);
 
-  function toggleTimer() {
-    if (value) {
-      if (!isNaN(value.minute()) && !isNaN(value.second()) && seconds !== 0) {
-        setIsActive(!isActive);
-        setRead(!read);
-      }
+  const startTimer = () => {
+    if (
+      value &&
+      !isNaN(value.minute()) &&
+      !isNaN(value.second()) &&
+      seconds !== 0
+    ) {
+      setIsActive(!isActive);
+      setRead(!read);
     }
-  }
+  };
 
-  function resetTimer() {
-    setTimer();
+  const pauseTimer = () => setIsActive(false);
+
+  const resetTimer = () => {
+    setSeconds(calculateDuration());
+    setDuration(calculateDuration());
     setRead(false);
     setIsActive(false);
     setProgress(100);
     setShowProgressBar(false);
-  }
+  };
 
-  function setTimer() {
+  const calculateDuration = () => {
     if (value) {
       const getHours = isNaN(value.hour()) ? 0 : value.hour();
       const getMinutes = isNaN(value.minute()) ? 0 : value.minute();
       const getSeconds = isNaN(value.second()) ? 0 : value.second();
-      const time = getHours * 3600 + getMinutes * 60 + getSeconds;
-      setSeconds(time);
-      setDuration(time);
+      return getHours * 3600 + getMinutes * 60 + getSeconds;
     }
-  }
+    return 0;
+  };
 
-  const handleClose = () => {
+  const handleCloseAlert = () => {
     setShowAlert(!showAlert);
   };
 
   useEffect(() => {
-    setTimer();
+    setSeconds(calculateDuration());
+    setDuration(calculateDuration());
   }, [value]);
 
   useEffect(() => {
     let interval: any;
-    if (isActive && seconds !== null && seconds > 0) {
+    if (isActive && seconds !== null && seconds >= 0) {
       setShowProgressBar(true);
       interval = setInterval(() => {
         setSeconds((prevSeconds) => {
           const newSeconds = prevSeconds - 1;
-          if (newSeconds === 0) {
-            setShowAlert(true);
-          }
           setProgress((newSeconds / duration) * 100);
           return newSeconds;
         });
       }, 1000);
-    } else if (seconds === 0) {
+    } else if (seconds < 0) {
       clearInterval(interval);
-      setIsActive(false);
+      setShowAlert(true);
       resetTimer();
     }
     return () => clearInterval(interval);
@@ -83,7 +86,7 @@ export default function Timer() {
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={showAlert}
-        onClose={handleClose}
+        onClose={handleCloseAlert}
         autoHideDuration={2000}
         message={
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
@@ -113,7 +116,7 @@ export default function Timer() {
             />
           </LocalizationProvider>
           <div className="button-class">
-            <button onClick={toggleTimer}>
+            <button onClick={isActive ? pauseTimer : startTimer}>
               {isActive ? "Pause" : "Start"}
             </button>
             <button onClick={resetTimer}>Reset</button>
