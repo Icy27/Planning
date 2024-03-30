@@ -7,8 +7,8 @@ button {
   height: 100%;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   button {
     background-color: #90bdba;
   }
-}
+} */
