@@ -1,6 +1,10 @@
 .timeField input {
-  color: white;
+  color: #fefff9;
   text-align: center;
+}
+
+.timeField fieldset {
+  border-color: #fefff9;
 }
 
 .snackbar .MuiSnackbarContent-root {
@@ -75,4 +79,18 @@
 .timerInput.moveUp .timeField {
   opacity: 1;
   transition: opacity 0.8s ease 0.3s; /* Slow transition for opacity from 0 to 100 */
+}
+
+@media (prefers-color-scheme: light) {
+  .timeField input {
+    color: #213547;
+  }
+
+  .progressBar span circle {
+    color: #a25342;
+  }
+
+  .timeField fieldset {
+    border-color: #213547;
+  }
 }
